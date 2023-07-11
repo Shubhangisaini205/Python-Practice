@@ -13,9 +13,10 @@ weather_data = {
 @app.route('/weather/<string:city>', methods=["GET"])
 def Display_Weather(city):
     if city in weather_data:
-        return jsonify(weather_data[city])
+        return jsonify(weather_data[city]),200
     else:
-        return jsonify({'error': 'City not found'}), 404
+        return jsonify({'error': 'City not found'}), 400
+    
 
 @app.route('/weather', methods=["POST"])
 def Post_weather():
